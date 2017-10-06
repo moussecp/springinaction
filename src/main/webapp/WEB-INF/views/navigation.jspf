@@ -1,0 +1,14 @@
+<nav role="navigation" class="navbar navbar-default">
+    <div>
+        <a href="http://www.hermes-ecs.com" class="navbar-brand"><spring:message code="navigation.menu.hermes"/></a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="/"><spring:message code="navigation.menu.home"/></a></li>
+            <li class="active"><a href="/list-todos"><spring:message code="navigation.menu.quotes"/></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><spring:message code="navigation.menu.logout"/></a></li>
+        </ul>
+    </div>
+</nav>

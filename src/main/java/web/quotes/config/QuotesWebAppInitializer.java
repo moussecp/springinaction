@@ -1,8 +1,8 @@
-package web.spittr.config;
+package web.quotes.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class QuotesWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};

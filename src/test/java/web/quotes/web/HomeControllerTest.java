@@ -1,4 +1,4 @@
-package web.spittr.web;
+package web.quotes.web;
 
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
