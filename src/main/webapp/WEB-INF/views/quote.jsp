@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <title><spring:message code="quote.title"/> ${quote.id}</title>
+    <title><s:message code="quote.title"/> ${quote.id}</title>
     <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
           rel="stylesheet">
 </head>
@@ -15,11 +15,11 @@
         </caption>
         <thead>
         <tr>
-            <th><spring:message code="quotes.author"/></th>
-            <th><spring:message code="quotes.reference"/></th>
-            <th><spring:message code="quotes.time.added"/></th>
-            <th><spring:message code="quotes.delete"/></th>
-            <th><spring:message code="quotes.detail"/></th>
+            <th><s:message code="quotes.author"/></th>
+            <th><s:message code="quotes.reference"/></th>
+            <th><s:message code="quotes.time.added"/></th>
+            <th><s:message code="quotes.delete"/></th>
+            <th><s:message code="quotes.detail"/></th>
         </tr>
         </thead>
         <tbody>
@@ -28,8 +28,8 @@
                 <td>${quote.author}</td>
                 <td>${quote.reference}</td>
                 <td>${quote.time}</td>
-                <td><a href="/quotes/${quote.id}" class="btn-info"><spring:message code="quotes.detail"/></a>
-                <td><a href="/delete-quote?id=${quote.id}" class="btn btn-danger"><spring:message
+                <td><a href="/quotes/${quote.id}" class="btn-info"><s:message code="quotes.detail"/></a>
+                <td><a href="/delete-quote?id=${quote.id}" class="btn btn-danger"><s:message
                         code="quotes.delete"/></a>
                 </td>
             </tr>
