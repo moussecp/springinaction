@@ -13,7 +13,6 @@ import web.quotes.data.QuoteRepository;
 @RequestMapping("/quotes")
 public class QuoteController {
     public static final String DEFAULT_MAX_VALUE = "15";
-    @Autowired
     private QuoteRepository quoteRepository;
 
     @Autowired
