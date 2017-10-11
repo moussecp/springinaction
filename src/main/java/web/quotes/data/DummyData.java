@@ -1,15 +1,18 @@
 package web.quotes.data;
 
+import web.quotes.data.quote.Quote;
+import web.quotes.data.user.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DummyData {
 
-    protected static List<Quote> getBootstrapQuotes() {
+    public static List<Quote> getBootstrapQuotes() {
         return feedQuotes();
     }
 
-    protected static List<User> getBootstrapUsers() {
+    public static List<User> getBootstrapUsers() {
         return feedUsers();
     }
 

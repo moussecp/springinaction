@@ -1,4 +1,4 @@
-package web.quotes.data;
+package web.quotes.data.quote;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

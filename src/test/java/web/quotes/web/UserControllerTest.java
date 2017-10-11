@@ -5,8 +5,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import web.quotes.data.User;
-import web.quotes.data.UserRepository;
+import web.quotes.data.user.User;
+import web.quotes.data.user.UserRepository;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

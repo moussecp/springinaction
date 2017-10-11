@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
+import web.quotes.data.user.UserRepository;
+import web.quotes.data.user.UserRepositoryDummyImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserRepositoryTest extends TestCase {

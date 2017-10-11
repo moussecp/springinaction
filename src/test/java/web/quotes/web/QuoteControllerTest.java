@@ -7,8 +7,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.Model;
-import web.quotes.data.Quote;
-import web.quotes.data.QuoteRepository;
+import web.quotes.data.quote.Quote;
+import web.quotes.data.quote.QuoteRepository;
 
 import java.util.ArrayList;
 import java.util.List;

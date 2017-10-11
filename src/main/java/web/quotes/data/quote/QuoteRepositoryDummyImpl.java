@@ -1,6 +1,7 @@
-package web.quotes.data;
+package web.quotes.data.quote;
 
 import org.springframework.stereotype.Repository;
+import web.quotes.data.DummyData;
 
 import java.util.ArrayList;
 import java.util.List;

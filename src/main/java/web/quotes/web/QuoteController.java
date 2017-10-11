@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import web.quotes.data.Quote;
-import web.quotes.data.QuoteRepository;
+import web.quotes.data.quote.Quote;
+import web.quotes.data.quote.QuoteRepository;
 
 @Controller
 @RequestMapping("/quotes")

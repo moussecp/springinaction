@@ -1,4 +1,4 @@
-package web.quotes.data;
+package web.quotes.data.user;
 
 import java.util.List;
 
