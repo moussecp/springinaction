@@ -21,6 +21,7 @@ public class QuoteController {
         this.quoteRepository = quoteRepository;
     }
 
+    // get quotes list
     @RequestMapping(method = RequestMethod.GET)
     public String quotes(
             @RequestParam(value = "max", defaultValue = DEFAULT_MAX_VALUE) int max,
@@ -29,6 +30,7 @@ public class QuoteController {
         return "quotes";
     }
 
+    // get quote detail for given id
     @RequestMapping(value = "/{quoteId}", method = RequestMethod.GET)
     public String quote(
             @PathVariable("quoteId") long quoteId,
@@ -37,6 +39,7 @@ public class QuoteController {
         return "quote";
     }
 
+    // delete quote and call back quotes list
     @RequestMapping(value = "/delete-quote/{quoteId}", method = RequestMethod.GET)
     public String deleteQuote(
             @PathVariable("quoteId") long quoteId,
@@ -46,16 +49,34 @@ public class QuoteController {
         return "quotes";
     }
 
+    // add quote form getter
     @RequestMapping(value = "/add-quote/", method = RequestMethod.GET)
     public String addQuoteForm() {
         return "add-quote";
     }
 
+    // addQuote without exception handler
+//    @RequestMapping(value = "/add-quote/", method = RequestMethod.POST)
+//    public String addQuote(String message, String author, String reference, Model model) {
+//        Quote quote = new Quote(message, author, reference);
+//        quoteRepository.add(quote);
+//        model.addAttribute("quotes", quoteRepository.findQuotes());
+//        return "quotes";
+//    }
+
+
+    // addQuote with try catch exception
     @RequestMapping(value = "/add-quote/", method = RequestMethod.POST)
     public String addQuote(String message, String author, String reference, Model model) {
-        Quote quote = new Quote(message, author, reference);
-        quoteRepository.add(quote);
-        model.addAttribute("quotes", quoteRepository.findQuotes());
-        return "quotes";
+        Quote quote;
+        try {
+            quote = new Quote(message, author, reference);
+            quoteRepository.add(quote);
+            model.addAttribute("quotes", quoteRepository.findQuotes());
+            return "quotes";
+        } catch(IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            return "error-missing-field";
+        }
     }
 }

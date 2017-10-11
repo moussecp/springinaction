@@ -2,6 +2,7 @@ package web.quotes.data.user;
 
 import org.springframework.stereotype.Repository;
 import web.quotes.data.DummyData;
+import web.quotes.exception.UserAlreadyExistsException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,7 @@ public class UserRepositoryDummyImpl implements UserRepository {
     public User save(User user) {
         User foundUser = find(user.getUsername());
         if (foundUser != null) {
-            return foundUser;
+            throw new UserAlreadyExistsException(foundUser.getUsername());
         } else {
             users.add(user);
             return user;

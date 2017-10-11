@@ -18,7 +18,7 @@
         <button type="submit" class="btn btn-default"><s:message code="users.submit"/></button>
     </form>
     <div>
-        <a class="btn btn-success" href="/users/"><s:message code="users.add"/></a>
+        <a class="btn btn-success" href="/users/register/"><s:message code="users.add"/></a>
     </div>
     <table class="table table-striped">
         <thead>

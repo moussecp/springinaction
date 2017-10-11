@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import web.quotes.data.user.User;
 import web.quotes.data.user.UserRepository;
 
@@ -24,12 +25,14 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    // get users list
     @RequestMapping(method = RequestMethod.GET)
     public String users(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "users";
     }
 
+    // find user for a given username search filter
     @RequestMapping(method = RequestMethod.POST)
     public String users(String username, Model model) {
         if (Strings.isNullOrEmpty(username)) {
@@ -40,11 +43,13 @@ public class UserController {
         return "users";
     }
 
+    // register a new user
     @RequestMapping(value = "/register", method = GET)
     public String showRegistrationForm() {
         return "register-user";
     }
 
+    // post new user fields
     //    @RequestMapping(method = POST)
 //    public String processRegistration(
 //            String firstName,
@@ -56,12 +61,48 @@ public class UserController {
 //        userRepository.save(user);
 //        return "redirect:/users/" + user.getUsername();
 //    }
+
+    // post new user object without exception handling
+//    @RequestMapping(value = "/register", method = POST)
+//    public String processRegistration(User user) {
+//        userRepository.save(user);
+//        return "redirect:/users/" + user.getUsername();
+//    }
+
+    // post new user object and redirect to users/profile with passed object instead of path parameters
     @RequestMapping(value = "/register", method = POST)
-    public String processRegistration(User user) {
+    public String processRegistration(User user, RedirectAttributes model) {
         userRepository.save(user);
-        return "redirect:/users/" + user.getUsername();
+        model.addFlashAttribute(user); // add flash attribute to pass on objects through the redirect
+        return "user-profile";
     }
 
+    // post new user object with try/catch exception handling
+//    @RequestMapping(value = "/register", method = POST)
+//    public String processRegistration(User user, Model model) {
+//        try {
+//            userRepository.save(user);
+//            return "redirect:/users/" + user.getUsername();
+//        } catch (UserAlreadyExistsException e) {
+//            model.addAttribute("error", e.getMessage());
+//            return "error-duplicate";
+//        }
+//    }
+
+    // using exception handler to catch duplicate exception
+//    @ExceptionHandler(UserAlreadyExistsException.class)
+//    public String handleExceptions() {
+//        return "error-duplicate";
+//    }
+
+    // post new user object with validation
+//    @RequestMapping(value = "/register", method = POST)
+//    public String processRegistration(@Valid User user) {
+//        userRepository.save(user);
+//        return "redirect:/users/" + user.getUsername();
+//    }
+
+    // get a given user detail
     @RequestMapping(value = "/{username}", method = GET)
     public String showUserProfile(
             @PathVariable String username,
