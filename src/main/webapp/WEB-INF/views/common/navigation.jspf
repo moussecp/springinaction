@@ -1,15 +1,14 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <nav role="navigation" class="navbar navbar-default">
     <div>
-        <a href="http://www.hermes-ecs.com" class="navbar-brand"><s:message code="navigation.menu.hermes"/></a>
+
+        <a href="http://www.hermes-ecs.com" class="navbar-brand"><img border="0" src="http://www.hermes-ecs.com/public/images/layout/logo.gif"></a>
+        <a href="/" class="navbar-brand"><s:message code="navigation.menu.quotes-manager"/></a>
     </div>
     <div>
         <ul class="nav navbar-nav">
             <li><a href="/"><s:message code="navigation.menu.home"/></a></li>
             <li class="active"><a href="/quotes"><s:message code="navigation.menu.quotes"/></a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/logout"><s:message code="navigation.menu.logout"/></a></li>
         </ul>
     </div>
 </nav>

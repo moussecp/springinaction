@@ -3,12 +3,15 @@
 <html>
 <head>
     <title><s:message code="quotes.title"/></title>
-    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-          rel="stylesheet">
+    <%@ include file="common/style.jspf" %>
 </head>
 <body>
-<%@ include file="navigation.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 <div class="container">
+<h1><s:message code="quotes.title"/></h1>
+    <div>
+        <a class="btn btn-success" href="/quotes/add-quote/"><s:message code="quotes.add"/></a>
+    </div>
     <table class="table table-striped">
         <caption>
             <s:message code="quotes.caption"/> (<s:message code="quotes.showing"/> ${quotes.size()})
@@ -28,18 +31,26 @@
             <tr>
                 <td>${quote.author}</td>
                 <td>${quote.truncatedMessage}</td>
-                <td><a href="/quotes/${quote.id}" class="btn-info"><s:message code="quotes.detail"/></a>
+                <td>
+                    <a href="/quotes/${quote.id}"
+                       class="btn btn-info">
+                        <s:message code="quotes.detail"/>
+                    </a>
+                </td>
                 <td>${quote.reference}</td>
                 <td>${quote.time}</td>
-                <td><a href="/delete-quote?id=${quote.id}" class="btn btn-danger"><s:message
-                        code="quotes.delete"/></a>
+                <td>
+                    <a href="/quotes/delete-quote/${quote.id}"
+                       class="btn btn-danger">
+                        <s:message code="quotes.delete"/>
+                    </a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
     <div>
-        <a class="btn btn-success" href="/add-quote"><s:message code="quotes.add"/></a>
+        <a class="btn btn-success" href="/quotes/add-quote/"><s:message code="quotes.add"/></a>
     </div>
 </div>
 </body>

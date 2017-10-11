@@ -3,13 +3,10 @@ package web.quotes.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import web.quotes.data.User;
 import web.quotes.data.UserRepository;
-
-import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -27,23 +24,28 @@ public class RegisterController {
 
     @RequestMapping(method = GET)
     public String showRegistrationForm() {
-        return "registerForm";
+        return "register-user";
     }
 
-
-    @RequestMapping(value = "/register", method = POST)
-    public String processRegistration(
-            @Valid User user,
-            Errors errors) {
-        if(errors.hasErrors()) {
-            return "registerForm";
-        }
+//    @RequestMapping(method = POST)
+//    public String processRegistration(
+//            String firstName,
+//            String lastName,
+//            String email,
+//            String username,
+//            String password) {
+//        User user = new User(firstName, lastName, email, username, password);
+//        userRepository.save(user);
+//        return "redirect:/users/" + user.getUsername();
+//    }
+    @RequestMapping(method = POST)
+    public String processRegistration(User user) {
         userRepository.save(user);
         return "redirect:/users/" + user.getUsername();
     }
 
     @RequestMapping(value = "/{username}", method = GET)
-    public String showSpitterProfile(
+    public String showUserProfile(
             @PathVariable String username,
             Model model) {
         User user = userRepository.find(username);

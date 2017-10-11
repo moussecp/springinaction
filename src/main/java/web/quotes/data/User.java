@@ -1,10 +1,12 @@
 package web.quotes.data;
 
-import com.google.common.base.Preconditions;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Strings.isNullOrEmpty;
 
 
 public class User {
@@ -37,8 +39,8 @@ public class User {
     }
 
     public User(String firstName, String lastName, String email, String username, String password) {
-        Preconditions.checkNotNull(username, "username cannot be null");
-        Preconditions.checkNotNull(password, "password cannot be null");
+        checkArgument(!isNullOrEmpty(username), "username cannot be null");
+        checkArgument(!isNullOrEmpty(password), "password cannot be null");
         this.id = ++idSequence;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import web.quotes.data.Quote;
 import web.quotes.data.QuoteRepository;
 
 @Controller
@@ -34,5 +35,27 @@ public class QuoteController {
             Model model) {
         model.addAttribute(quoteRepository.find(quoteId));
         return "quote";
+    }
+
+    @RequestMapping(value = "/delete-quote/{quoteId}", method = RequestMethod.GET)
+    public String deleteQuote(
+            @PathVariable("quoteId") long quoteId,
+            Model model) {
+        quoteRepository.deleteQuote(quoteId);
+        model.addAttribute("quotes", quoteRepository.findQuotes());
+        return "quotes";
+    }
+
+    @RequestMapping(value = "/add-quote/", method = RequestMethod.GET)
+    public String addQuoteForm() {
+        return "add-quote";
+    }
+
+    @RequestMapping(value = "/add-quote/", method = RequestMethod.POST)
+    public String addQuote(String message, String author, String reference, Model model) {
+        Quote quote = new Quote(message, author, reference);
+        quoteRepository.add(quote);
+        model.addAttribute("quotes", quoteRepository.findQuotes());
+        return "quotes";
     }
 }
