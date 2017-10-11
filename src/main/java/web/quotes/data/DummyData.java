@@ -9,6 +9,10 @@ public class DummyData {
         return feedQuotes();
     }
 
+    protected static List<User> getBootstrapUsers() {
+        return feedUsers();
+    }
+
     private static List<Quote> feedQuotes() {
         List<Quote> quotes = new ArrayList<>();
         quotes.add(new Quote("The trouble with having an open mind, of course, is that people will insist on coming along and trying to put things in it.", "Terry Pratchett", "Diggers"));
@@ -26,20 +30,29 @@ public class DummyData {
         quotes.add(new Quote("It's not worth doing something unless someone, somewhere, would much rather you weren't doing it.", "Terry Pratchett", ""));
         quotes.add(new Quote("Light thinks it travels faster than anything but it is wrong. No matter how fast light travels, it finds the darkness has always got there first, and is waiting for it.", "Terry Pratchett", "Reaper Man"));
         quotes.add(new Quote("DON'T THINK OF IT AS DYING, said Death. JUST THINK OF IT AS LEAVING EARLY TO AVOID THE RUSH.", "Terry Pratchett", "Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch"));
-        quotes.add(new Quote("If you have enough book space, I don't want to talk to you.", "Terry Pratchett",""));
+        quotes.add(new Quote("If you have enough book space, I don't want to talk to you.", "Terry Pratchett", ""));
         quotes.add(new Quote("Five exclamation marks, the sure sign of an insane mind.", "Terry Pratchett", "Reaper Man"));
         quotes.add(new Quote("God does not play dice with the universe; He plays an ineffable game of His own devising, which might be compared, from the perspective of any of the other players [i.e. everybody], to being involved in an obscure and complex variant of poker in a pitch-dark room, with blank cards, for infinite stakes, with a Dealer who won't tell you the rules, and who smiles all the time.", "Terry Pratchett", "Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch"));
         quotes.add(new Quote("I'll be more enthusiastic about encouraging thinking outside the box when there's evidence of any thinking going on inside it.", "Terry Pratchett", ""));
-        quotes.add(new Quote("And what would humans be without love?\" RARE, said Death.","Terry Pratchett", "Sourcery"));
+        quotes.add(new Quote("And what would humans be without love?\" RARE, said Death.", "Terry Pratchett", "Sourcery"));
         quotes.add(new Quote("No! Please! I'll tell you whatever you want to know!\" the man yelled. \"Really?\" said Vimes. \"What's the orbital velocity of the moon?\" \"What?\" \"Oh, you'd like something simpler?", "Terry Pratchett", "Night Watch"));
         quotes.add(new Quote("Real stupidity beats artificial intelligence every time.", "Terry Pratchett", "Hogfather"));
-        quotes.add(new Quote("There is a rumour going around that I have found God. I think this is unlikely because I have enough difficulty finding my keys, and there is empirical evidence that they exist.", "Terry Pratchett",""));
+        quotes.add(new Quote("There is a rumour going around that I have found God. I think this is unlikely because I have enough difficulty finding my keys, and there is empirical evidence that they exist.", "Terry Pratchett", ""));
         quotes.add(new Quote("It would seem that you have no useful skill or talent whatsoever,\" he said. \"Have you thought of going into teaching?", "Terry Pratchett", "Mort"));
         quotes.add(new Quote("Just erotic. Nothing kinky. It's the difference between using a feather and using a chicken.", "Terry Pratchett", "Eric"));
         quotes.add(new Quote("Coming back to where you started is not the same as never leaving.", "Terry Pratchett", "A Hat Full of Sky"));
         quotes.add(new Quote("A good bookshop is just a genteel Black Hole that knows how to read.", "Terry Pratchett", "Guards! Guards!"));
-        quotes.add(new Quote("I'd rather be a rising ape than a falling angel.", "Terry Pratchett",""));
+        quotes.add(new Quote("I'd rather be a rising ape than a falling angel.", "Terry Pratchett", ""));
         quotes.add(new Quote("If you trust in yourself. . .and believe in your dreams. . .and follow your star. . . you'll still get beaten by people who spent their time working hard and learning things and weren't so lazy.", "Terry Pratchett", "The Wee Free Men "));
         return quotes;
+    }
+
+    private static List<User> feedUsers() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("administration@quotes.com", "admin", "changeit"));
+        users.add(new User("Yannick", "Bruyninckx", "yannick.bruyninckx@hermes-ecs.com", "moussecp", "abracadabra"));
+        users.add(new User("Guillaume", "Lincé", "guillaume.lince@hermes-ecs.com", "glince", "glinceFTW"));
+        users.add(new User("Etienne", "Martel", "etienne.martel@hermes-ecs.com", "eti1", "monmotdepasseestsuperlongetcomplique"));
+        return users;
     }
 }

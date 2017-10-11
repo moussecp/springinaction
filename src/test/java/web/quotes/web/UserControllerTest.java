@@ -16,14 +16,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RegisterControllerTest {
+public class UserControllerTest {
 
     @Mock
     private UserRepository mockedUserRepository;
 
     @Test
     public void shouldShowRegistration() throws Exception {
-        RegisterController controller = new RegisterController(mockedUserRepository);
+        UserController controller = new UserController(mockedUserRepository);
         MockMvc mockMvc = standaloneSetup(controller).build();
         mockMvc.perform(get("/users"))
                 .andExpect(view().name("registerForm"));
@@ -31,7 +31,7 @@ public class RegisterControllerTest {
 
     @Test
     public void shouldProcessRegistration() throws Exception {
-        RegisterController controller = new RegisterController(mockedUserRepository);
+        UserController controller = new UserController(mockedUserRepository);
         MockMvc mockMvc = standaloneSetup(controller).build();
         mockMvc.perform(post("/users/register")
                 .param("username", "jbauer")

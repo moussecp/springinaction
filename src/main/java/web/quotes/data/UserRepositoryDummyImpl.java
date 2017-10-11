@@ -4,11 +4,16 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class UserRepositoryDummyImpl implements UserRepository {
 
     private static List<User> users = new ArrayList<>();
+
+    static {
+        users = DummyData.getBootstrapUsers();
+    }
 
     @Override
     public User find(Long id) {
@@ -23,6 +28,15 @@ public class UserRepositoryDummyImpl implements UserRepository {
     @Override
     public List<User> findAll() {
         return users;
+    }
+
+    @Override
+    public List<User> findAllLike(String username) {
+        return users.stream()
+                .filter(user -> user
+                        .getUsername().toUpperCase()
+                        .contains(username.toUpperCase()))
+                .collect(Collectors.toList());
     }
 
     @Override

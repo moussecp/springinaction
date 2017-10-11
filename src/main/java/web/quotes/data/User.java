@@ -29,6 +29,18 @@ public class User {
     @Email(message = "{email.valid}")
     private String email;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
     //used for form only
     public User() {
         this.id = ++idSequence;

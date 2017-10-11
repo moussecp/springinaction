@@ -9,6 +9,8 @@ public interface UserRepository {
 
     List<User> findAll();
 
+    List<User> findAllLike(String username);
+
     boolean exists(String username);
 
     User save(User user);

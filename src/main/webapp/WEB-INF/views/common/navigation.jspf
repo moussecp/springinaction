@@ -9,6 +9,7 @@
         <ul class="nav navbar-nav">
             <li><a href="/"><s:message code="navigation.menu.home"/></a></li>
             <li class="active"><a href="/quotes"><s:message code="navigation.menu.quotes"/></a></li>
+            <li class="active"><a href="/users"><s:message code="navigation.menu.users"/></a></li>
         </ul>
     </div>
 </nav>

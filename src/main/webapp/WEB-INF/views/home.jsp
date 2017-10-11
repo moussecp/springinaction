@@ -13,6 +13,6 @@
         href="/quotes"><s:message code="home.intro.message.p2"/></a>
 </div>
 <a href="<c:url value="/quotes" />"><s:message code="home.menu.quotes"/></a> |
-<a href="<c:url value="/users" />"><s:message code="home.menu.user.register"/></a>
+<a href="<c:url value="/users/register" />"><s:message code="home.menu.user.register"/></a>
 </body>
 </html>
