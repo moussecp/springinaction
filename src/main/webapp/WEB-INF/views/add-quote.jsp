@@ -11,6 +11,9 @@
 <div class="container">
 <h1><s:message code="add-quote.title"/></h1>
     <form method="POST">
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
         <div class="form-group">
             <label for="message"><s:message code="add-quote.message"/></label>
             <input type="text" class="form-control" name="message" id="message"

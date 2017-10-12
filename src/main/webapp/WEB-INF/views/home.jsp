@@ -9,7 +9,7 @@
 <body>
 <%@ include file="common/navigation.jspf" %>
 <div class="container">
-    <s:message code="home.welcome.caption"/>. <BR/> <s:message code="home.intro.message.p1"/> <a
+    <s:message code="home.welcome.caption"/> ${username}. <BR/> <s:message code="home.intro.message.p1"/> <a
         href="/quotes"><s:message code="home.intro.message.p2"/></a>
 </div>
 <a href="<c:url value="/quotes" />"><s:message code="home.menu.quotes"/></a> |

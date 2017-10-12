@@ -22,7 +22,7 @@ public class QuoteRepositoryDummyImpl implements QuoteRepository {
 
     @Override
     public List<Quote> findQuotes(int max) {
-        return quotes.subList(0, max);
+        return quotes.subList(0, Math.min(quotes.size(), max));
     }
 
     @Override

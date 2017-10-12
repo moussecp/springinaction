@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="ss" uri="http://www.springframework.org/security/tags" %>
 <nav role="navigation" class="navbar navbar-default">
     <div>
 
@@ -8,8 +9,12 @@
     <div>
         <ul class="nav navbar-nav">
             <li><a href="/"><s:message code="navigation.menu.home"/></a></li>
-            <li class="active"><a href="/quotes"><s:message code="navigation.menu.quotes"/></a></li>
-            <li class="active"><a href="/users"><s:message code="navigation.menu.users"/></a></li>
+            <li><a href="/quotes"><s:message code="navigation.menu.quotes"/></a></li>
+            <li><a href="/users"><s:message code="navigation.menu.users"/></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><s:message code="navigation.menu.login.message"/> <ss:authentication property="principal.username" /></li>
+            <li><a href="/logout"><s:message code="navigation.menu.logout"/></a></li>
         </ul>
     </div>
 </nav>

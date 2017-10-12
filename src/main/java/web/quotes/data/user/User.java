@@ -1,6 +1,7 @@
 package web.quotes.data.user;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -58,7 +59,11 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.username = username;
-        this.password = password;
+        this.password = getEncodedPassword(password);
+    }
+
+    private String getEncodedPassword(String password) {
+        return new StandardPasswordEncoder().encode(password);
     }
 
     public Long getId() {
@@ -102,6 +107,6 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = getEncodedPassword(password);
     }
 }
