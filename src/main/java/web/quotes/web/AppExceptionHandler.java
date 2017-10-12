@@ -8,7 +8,12 @@ import web.quotes.exception.UserAlreadyExistsException;
 public class AppExceptionHandler {
 
     @ExceptionHandler(UserAlreadyExistsException.class)
-    public String handleExceptions() {
+    public String handleDuplicateExceptions() {
         return "error-duplicate";
+    }
+
+    @ExceptionHandler({IllegalArgumentException.class, NullPointerException.class})
+    public String handleBadDataExceptions() {
+        return "error-missing-field";
     }
 }
