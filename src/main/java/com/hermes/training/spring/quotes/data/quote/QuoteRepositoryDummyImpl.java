@@ -25,24 +25,39 @@ public class QuoteRepositoryDummyImpl implements QuoteRepository {
         return quotes.subList(0, Math.min(quotes.size(), max));
     }
 
+//    @Override
+//    public Quote find(long quoteId) {
+//        return quotes.stream()
+//                .filter(quote -> quote.getId() == quoteId)
+//                .findFirst()
+//                .orElse(null);
+//    }
+
+    // throws exception if not found
     @Override
     public Quote find(long quoteId) {
-        return quotes.stream()
+        Quote foundQuote = quotes.stream()
                 .filter(quote -> quote.getId() == quoteId)
                 .findFirst()
                 .orElse(null);
+        if (foundQuote == null) {
+            throw new QuoteNotFoundException();
+        }
+        return foundQuote;
     }
 
     @Override
     public boolean deleteQuote(long quoteId) {
-        //TODO
+        Quote quote = find(quoteId);
+        if (quote != null) {
+            return quotes.remove(quote);
+        }
         return false;
     }
 
     @Override
     public Quote add(Quote quote) {
-        //TODO
-        return null;
+        quotes.add(quote);
+        return quote;
     }
-
 }
