@@ -1,6 +1,7 @@
 package com.hermes.training.spring.quotes.data;
 
 import com.hermes.training.spring.quotes.data.quote.Quote;
+import com.hermes.training.spring.quotes.data.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +12,9 @@ public class DummyData {
         return feedQuotes();
     }
 
-//    public static List<User> getBootstrapUsers() {
-//        return feedUsers();
-//    }
+    public static List<User> getBootstrapUsers() {
+        return feedUsers();
+    }
 
     private static List<Quote> feedQuotes() {
         List<Quote> quotes = new ArrayList<>();
@@ -49,12 +50,12 @@ public class DummyData {
         return quotes;
     }
 
-//    private static List<User> feedUsers() {
-//        List<User> users = new ArrayList<>();
-//        users.add(new User("administration@quotes.com", "admin", "admin"));
-//        users.add(new User("Yannick", "Bruyninckx", "yannick.bruyninckx@hermes-ecs.com", "moussecp", "abracadabra"));
-//        users.add(new User("Guillaume", "Lincé", "guillaume.lince@hermes-ecs.com", "glince", "glinceFTW"));
-//        users.add(new User("Etienne", "Martel", "etienne.martel@hermes-ecs.com", "eti1", "monmotdepasseestsuperlongetcomplique"));
-//        return users;
-//    }
+    private static List<User> feedUsers() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("administration@quotes.com", "admin", "admin"));
+        users.add(new User("Yannick", "Bruyninckx", "yannick.bruyninckx@hermes-ecs.com", "moussecp", "abracadabra"));
+        users.add(new User("Guillaume", "Lincé", "guillaume.lince@hermes-ecs.com", "glince", "glinceFTW"));
+        users.add(new User("Etienne", "Martel", "etienne.martel@hermes-ecs.com", "eti1", "monmotdepasseestsuperlongetcomplique"));
+        return users;
+    }
 }

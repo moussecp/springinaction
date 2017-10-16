@@ -1,5 +1,6 @@
 package com.hermes.training.spring.quotes.web;
 
+import com.hermes.training.spring.quotes.data.quote.Quote;
 import com.hermes.training.spring.quotes.data.quote.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,5 +37,30 @@ public class QuoteController {
             Model model) {
         model.addAttribute(quoteRepository.find(quoteId));
         return "quote";
+    }
+
+    // delete quote and call back quotes list
+    @RequestMapping(value = "/delete-quote/{quoteId}", method = RequestMethod.GET)
+    public String deleteQuote(
+            @PathVariable("quoteId") long quoteId,
+            Model model) {
+        quoteRepository.deleteQuote(quoteId);
+        model.addAttribute("quotes", quoteRepository.findAll());
+        return "quotes";
+    }
+
+    // add quote form getter
+    @RequestMapping(value = "/add-quote/", method = RequestMethod.GET)
+    public String addQuoteForm() {
+        return "add-quote";
+    }
+
+    // addQuote without exception handler
+    @RequestMapping(value = "/add-quote/", method = RequestMethod.POST)
+    public String addQuote(String message, String author, String reference, Model model) {
+        Quote quote = new Quote(message, author, reference);
+        quoteRepository.add(quote);
+        model.addAttribute("quotes", quoteRepository.findAll());
+        return "quotes";
     }
 }
