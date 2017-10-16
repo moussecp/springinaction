@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Quotes</title>
+    <title><s:message code="home.menu.quotes"/></title>
     <%@ include file="common/style.jspf" %>
 </head>
 <body>
