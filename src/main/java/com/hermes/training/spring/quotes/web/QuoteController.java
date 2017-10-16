@@ -56,11 +56,27 @@ public class QuoteController {
     }
 
     // addQuote without exception handler
+//    @RequestMapping(value = "/add-quote/", method = RequestMethod.POST)
+//    public String addQuote(String message, String author, String reference, Model model) {
+//        Quote quote = new Quote(message, author, reference);
+//        quoteRepository.add(quote);
+//        model.addAttribute("quotes", quoteRepository.findAll());
+//        return "quotes";
+//    }
+
+
+    // addQuote with try catch exception
     @RequestMapping(value = "/add-quote/", method = RequestMethod.POST)
     public String addQuote(String message, String author, String reference, Model model) {
-        Quote quote = new Quote(message, author, reference);
-        quoteRepository.add(quote);
-        model.addAttribute("quotes", quoteRepository.findAll());
-        return "quotes";
+        Quote quote;
+        try {
+            quote = new Quote(message, author, reference);
+            quoteRepository.add(quote);
+            model.addAttribute("quotes", quoteRepository.findAll());
+            return "quotes";
+        } catch(IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            return "error-missing-field";
+        }
     }
 }

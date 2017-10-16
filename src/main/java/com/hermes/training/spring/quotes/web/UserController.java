@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -62,11 +63,44 @@ public class UserController {
 //    }
 
     // post new user object without exception handling
+//    @RequestMapping(value = "/register", method = POST)
+//    public String processRegistration(User user) {
+//        userRepository.save(user);
+//        return "redirect:/users/" + user.getUsername();
+//    }
+
+    // post new user object and redirect to users/profile with passed object instead of path parameters
     @RequestMapping(value = "/register", method = POST)
-    public String processRegistration(User user) {
+    public String processRegistration(User user, RedirectAttributes model) {
         userRepository.save(user);
-        return "redirect:/users/" + user.getUsername();
+        model.addFlashAttribute(user); // add flash attribute to pass on objects through the redirect
+        return "user-profile";
     }
+
+    // post new user object with try/catch exception handling
+//    @RequestMapping(value = "/register", method = POST)
+//    public String processRegistration(User user, Model model) {
+//        try {
+//            userRepository.save(user);
+//            return "redirect:/users/" + user.getUsername();
+//        } catch (UserAlreadyExistsException e) {
+//            model.addAttribute("error", e.getMessage());
+//            return "error-duplicate";
+//        }
+//    }
+
+    // using exception handler to catch duplicate exception
+//    @ExceptionHandler(UserAlreadyExistsException.class)
+//    public String handleExceptions() {
+//        return "error-duplicate";
+//    }
+
+    // post new user object with validation
+//    @RequestMapping(value = "/register", method = POST)
+//    public String processRegistration(@Valid User user) {
+//        userRepository.save(user);
+//        return "redirect:/users/" + user.getUsername();
+//    }
 
     // get a given user detail
     @RequestMapping(value = "/{username}", method = GET)
