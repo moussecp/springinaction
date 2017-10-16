@@ -3,7 +3,7 @@ package web.quotes.data.quote;
 import java.util.List;
 
 public interface QuoteRepository {
-    List<Quote> findQuotes();
+    List<Quote> findAll();
 
     List<Quote> findQuotes(int max);
 

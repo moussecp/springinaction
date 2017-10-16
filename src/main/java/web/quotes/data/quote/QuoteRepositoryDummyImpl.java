@@ -2,6 +2,7 @@ package web.quotes.data.quote;
 
 import org.springframework.stereotype.Repository;
 import web.quotes.data.DummyData;
+import web.quotes.exception.QuoteNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class QuoteRepositoryDummyImpl implements QuoteRepository {
     }
 
     @Override
-    public List<Quote> findQuotes() {
+    public List<Quote> findAll() {
         return quotes;
     }
 
@@ -25,12 +26,25 @@ public class QuoteRepositoryDummyImpl implements QuoteRepository {
         return quotes.subList(0, Math.min(quotes.size(), max));
     }
 
+//    @Override
+//    public Quote find(long quoteId) {
+//        return quotes.stream()
+//                .filter(quote -> quote.getId() == quoteId)
+//                .findFirst()
+//                .orElse(null);
+//    }
+
+// throws exception if not found
     @Override
     public Quote find(long quoteId) {
-        return quotes.stream()
+        Quote foundQuote = quotes.stream()
                 .filter(quote -> quote.getId() == quoteId)
                 .findFirst()
                 .orElse(null);
+        if(foundQuote == null) {
+            throw new QuoteNotFoundException();
+        }
+        return foundQuote;
     }
 
     @Override

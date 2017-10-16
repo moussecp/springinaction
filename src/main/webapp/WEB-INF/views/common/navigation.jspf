@@ -14,6 +14,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><s:message code="navigation.menu.login.message"/> <ss:authentication property="principal.username" /></li>
+            <%--<li><s:message code="navigation.menu.login.message"/> N/A</li>--%>
             <li><a href="/logout"><s:message code="navigation.menu.logout"/></a></li>
         </ul>
     </div>

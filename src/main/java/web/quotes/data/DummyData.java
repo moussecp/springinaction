@@ -52,7 +52,7 @@ public class DummyData {
 
     private static List<User> feedUsers() {
         List<User> users = new ArrayList<>();
-        users.add(new User("administration@quotes.com", "admin", "changeit"));
+        users.add(new User("administration@quotes.com", "admin", "admin"));
         users.add(new User("Yannick", "Bruyninckx", "yannick.bruyninckx@hermes-ecs.com", "moussecp", "abracadabra"));
         users.add(new User("Guillaume", "Lincé", "guillaume.lince@hermes-ecs.com", "glince", "glinceFTW"));
         users.add(new User("Etienne", "Martel", "etienne.martel@hermes-ecs.com", "eti1", "monmotdepasseestsuperlongetcomplique"));

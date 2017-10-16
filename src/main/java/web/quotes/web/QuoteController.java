@@ -45,7 +45,7 @@ public class QuoteController {
             @PathVariable("quoteId") long quoteId,
             Model model) {
         quoteRepository.deleteQuote(quoteId);
-        model.addAttribute("quotes", quoteRepository.findQuotes());
+        model.addAttribute("quotes", quoteRepository.findAll());
         return "quotes";
     }
 
@@ -60,7 +60,7 @@ public class QuoteController {
 //    public String addQuote(String message, String author, String reference, Model model) {
 //        Quote quote = new Quote(message, author, reference);
 //        quoteRepository.add(quote);
-//        model.addAttribute("quotes", quoteRepository.findQuotes());
+//        model.addAttribute("quotes", quoteRepository.findAll());
 //        return "quotes";
 //    }
 
@@ -72,7 +72,7 @@ public class QuoteController {
         try {
             quote = new Quote(message, author, reference);
             quoteRepository.add(quote);
-            model.addAttribute("quotes", quoteRepository.findQuotes());
+            model.addAttribute("quotes", quoteRepository.findAll());
             return "quotes";
         } catch(IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());

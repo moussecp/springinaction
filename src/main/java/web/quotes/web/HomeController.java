@@ -15,7 +15,13 @@ public class HomeController {
     @RequestMapping(method = GET)
     public String home(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("username",authentication.getName());
+        String autentificationName;
+        if (authentication != null) {
+            autentificationName = authentication.getName();
+        } else {
+            autentificationName = "N/A";
+        }
+        model.addAttribute("username", autentificationName);
         return "home";
     }
 }

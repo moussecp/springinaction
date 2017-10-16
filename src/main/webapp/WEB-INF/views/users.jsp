@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title><s:message code="users.title"/></title>
@@ -9,14 +10,14 @@
 <%@ include file="common/navigation.jspf" %>
 <div class="container">
 <h1><s:message code="users.title"/></h1>
-    <form method="POST">
+    <sf:form method="POST">
         <div class="form-group">
             <label for="username"><s:message code="users.username"/></label>
             <input type="text" class="form-control" name="username" id="username"
                    placeholder="<s:message code="users.username"/>">
         </div>
         <button type="submit" class="btn btn-default"><s:message code="users.submit"/></button>
-    </form>
+    </sf:form>
     <div>
         <a class="btn btn-success" href="/users/register/"><s:message code="users.add"/></a>
     </div>
