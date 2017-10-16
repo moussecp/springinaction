@@ -11,5 +11,5 @@ public interface QuoteRepository {
 
     boolean deleteQuote(long quoteId);
 
-    void add(Quote quote);
+    Quote add(Quote quote);
 }

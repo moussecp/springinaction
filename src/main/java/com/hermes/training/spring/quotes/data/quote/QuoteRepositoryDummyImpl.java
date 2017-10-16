@@ -26,9 +26,11 @@ public class QuoteRepositoryDummyImpl implements QuoteRepository {
     }
 
     @Override
-    public Quote find(long id) {
-        //TODO
-        return null;
+    public Quote find(long quoteId) {
+        return quotes.stream()
+                .filter(quote -> quote.getId() == quoteId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -38,8 +40,9 @@ public class QuoteRepositoryDummyImpl implements QuoteRepository {
     }
 
     @Override
-    public void add(Quote quote) {
+    public Quote add(Quote quote) {
         //TODO
+        return null;
     }
 
 }
